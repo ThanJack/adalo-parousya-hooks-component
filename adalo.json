@@ -1,0 +1,12 @@
+{
+  "displayName": "Parousya Component",
+  "components": [
+    {
+      "name": "ParousyaComponent",
+      "manifest": "./src/components/parousya-component/manifest.json"
+    }
+  ],
+  "author": "",
+  "description": "",
+  "logo": "./example-logo.png"
+}
