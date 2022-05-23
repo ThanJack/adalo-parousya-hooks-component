@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState, useRef } from 'react'
+import { useMemo, useEffect, useState, useRef, useCallback } from 'react'
 import { AppState } from 'react-native'
 
 export const useAppInfo = () => {
@@ -8,22 +8,23 @@ export const useAppInfo = () => {
 
   const profile = useMemo(() => ({ useName: 'Than.Jack' }), [])
 
+  const onChange = useCallback(() => nextAppState => {
+    if (
+      appState.current.match(/inactive|background/) &&
+      nextAppState === "active"
+    ) {
+      console.log("App has come to the foreground!");
+    }
+
+    appState.current = nextAppState;
+    setAppStateVisible(appState.current);
+    console.log("AppState", appState.current);
+  }, [])
+
   useEffect(() => {
-    const subscription = AppState.addEventListener("change", nextAppState => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === "active"
-      ) {
-        console.log("App has come to the foreground!");
-      }
-
-      appState.current = nextAppState;
-      setAppStateVisible(appState.current);
-      console.log("AppState", appState.current);
-    });
-
+    AppState.addEventListener("change", onChange);
     return () => {
-      subscription.remove();
+      AppState.removeEventListener('change', onChange)
     };
   }, []);
 

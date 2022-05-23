@@ -12,10 +12,10 @@ const ParousyaHooksComponent = (props) => {
 		setNumber(prev => ++prev)
 	}, [])
 
-	return(
+	return (
 		<View style={styles.wrapper}>
 			<Text style={styles.text}>Use name: {profile.useName}</Text>
-			<Text style={styles.text}>App State Visible: {profile.appStateVisible}</Text>
+			<Text style={styles.text}>App State Visible: {appStateVisible}</Text>
 			<TouchableOpacity onPress={styles.btnSetNumber}>
 				<Text>{`${number || text}`}</Text>
 			</TouchableOpacity>
@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	btnSetNumber: {
-		padding: 16
-	}
+	btnSetNumber: {}
 })
 
 export default ParousyaHooksComponent

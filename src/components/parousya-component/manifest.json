@@ -1,7 +1,7 @@
 {
   "displayName": "ParousyaHooksComponent",
   "defaultWidth": 160,
-  "defaultHeight": 24,
+  "defaultHeight": 500,
   "components": "./index.js",
   "icon": "./example-thumbnail.png",
   "props": [
@@ -9,7 +9,7 @@
       "name": "text",
       "displayName": "Text",
       "type": "text",
-      "default": "Happy Hacking"
+      "default": "Hello World"
     },
     {
       "name": "color",
